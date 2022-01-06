@@ -8,13 +8,17 @@
     <title>
         @yield('title')
     </title>
-        @yield('css_cdn')
+        @yield('cdn')
 </head>
 <body>
-    @yield('nav')
+    @yield('navbar')
+
     @yield('content')
+
     @yield('form')
+
     @yield('footer')
+
 </body>
     @yield('js_cdn')
 </html>

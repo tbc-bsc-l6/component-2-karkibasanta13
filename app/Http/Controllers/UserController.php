@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('user.index', [
+        return view('user.book', [
             'product' => DB::table('product')->paginate(5)
         ]);
     }

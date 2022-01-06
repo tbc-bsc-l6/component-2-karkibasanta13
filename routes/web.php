@@ -27,6 +27,22 @@ Route::get('products/game', function () {
     return view('products.game');
 });
 
+Route::post('/input', [App\Http\Controllers\ProductController::class, 'input'])->name('input');
+
+
+
+//Route::post( 'products/book',function()  {
+//    return view('products.book');
+//    });
+//
+//    Route::post( 'products/cd', function()  {
+//    return view('products.cd');
+//    });
+//
+//    Route::post( 'products/game', function()  {
+//    return view('products.game');
+//    });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
