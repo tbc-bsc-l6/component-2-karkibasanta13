@@ -1,11 +1,10 @@
 {{--@extends('layouts.layout')--}}
 @extends('layouts.template')
 
+
 @section('title')
     Laravel
 @endsection
-
-
 
 
 @section('content')
@@ -41,3 +40,4 @@
         </div>
     </div>
 @endsection
+

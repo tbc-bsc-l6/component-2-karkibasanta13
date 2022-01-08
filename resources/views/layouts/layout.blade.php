@@ -17,6 +17,8 @@
 
     @yield('form')
 
+    @yield('newsletter')
+
     @yield('footer')
 
 </body>

@@ -3,9 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\awe\BookProduct;
-use App\Models\awe\CdProduct;
-use App\Models\awe\GameProduct;
+
 
 class CreateProductTable extends Migration
 {

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
+use config\newsletter;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,31 +18,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('products/book', function () {
-    return view('products.book');
-});
-Route::get('products/cd', function () {
-    return view('products.cd');
-});
-Route::get('products/game', function () {
-    return view('products.game');
-});
-
-Route::post('/input', [App\Http\Controllers\ProductController::class, 'input'])->name('input');
-
-
-
-//Route::post( 'products/book',function()  {
-//    return view('products.book');
-//    });
 //
-//    Route::post( 'products/cd', function()  {
-//    return view('products.cd');
-//    });
-//
-//    Route::post( 'products/game', function()  {
-//    return view('products.game');
-//    });
+//Route::get('newsletter','NewsletterController@index');
+//Route::post('newsletter/store','NewsletterController@store');
+
+Route::post('/subscribe', function ()
+{
+   $email = request('email');
+
+    Newsletter::subscribe($email);
+    return view('welcome');
+});
+
+Route::post('products/inputProduct', [ProductController::class, 'input'])->name('inputProduct');
+Route::get('products/book', [ProductController::class, 'showBookproduct'])->name('showBookproduct');
+Route::get('products/cd', [ProductController::class, 'showCDproduct'])->name('showCDproduct');
+Route::get('products/game', [ProductController::class, 'showGameproduct'])->name('showGameproduct');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

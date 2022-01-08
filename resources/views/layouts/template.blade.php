@@ -78,15 +78,40 @@
     <br><hr style="margin-left: 55px; margin-right: 55px;">
     <div class="container-fluid">
 
+
+
+
+{{--                                <div class="form-group bg-white border rounded px-2 py-2 mb-2">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col"> <input type="email" name="email" class="form-control pl-3 shadow-none bg-transparent border-0" placeholder="Enter your email address"> </div>--}}
+{{--                                        <div class="col-auto"> <button type="submit" class="btn btn-block btn-dark"><i class="fa fa-paper-plane-o mr-2"></i>Get notified</button> </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+
+
+
         <footer
             class="text-center text-lg-start text-white"
             style="background-color: #1c2331"
         >
             <section
                 class="d-flex justify-content-between p-4"
-                style="background-color: rgba(0, 0, 0, 0.2)"
-            >
+                style="background-color: rgba(0, 0, 0, 0.2)">
 
+                <div class="row" style="margin-left: 250px;">
+                  <div class="col-12">
+                        <form method="post" action='/subscribe'>
+                            @csrf
+                            <label for="inputPassword5" class="form-label"><h5>Sign Up For Newsletter?</h5></label>
+                            <input type="text" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="email">
+                            <div class="d-grid gap-2 col-2 mx-auto" style="margin-top: 5px;">
+                                <button class="btn btn-primary" type="submit" style="text-align: center">Sign Up</button>
+                            </div>
+                            <div id="passwordHelpBlock" class="form-text" style="text-align: center">
+                                We will not spam your inbox with rubbish. We promise you to provide only valuable information when you sign up with our newsletter. Thank You. :)</div>
+                        </form>
+                        </div>
+                </div>
             </section>
             <section>
                 <div class="container text-center text-md-start mt-5">

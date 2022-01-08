@@ -22,8 +22,8 @@
             <tr>
                 <th scope="col">Author</th>
                 <th scope="col">Title</th>
-                <th scope="col">Pages</th>
                 <th scope="col">Price</th>
+                <th scope="col">Pages</th>
                 @if (Route::has('login'))
                     @auth
                 <th scope="col">Edit</th>
@@ -33,41 +33,33 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Mark</td>
-                <td>The Land of God</td>
-                <td>550</td>
-                <td>250</td>
-                @if (Route::has('login'))
-                    @auth
-                        <td><a href="#"><i class="fas fa-edit"></i></a></td>
-                        <td><a href="#"><i class="fas fa-trash"></i></a></td>
-                    @endif
-                @endauth
-            </tr>
 
+                    @foreach($product as $row)
+                        <tr>
+                            <td>{{$row->title}}</td>
+                            <td>{{$row->firstname}} {{$row->mainname}}</td>
+                            <td>{{$row->price}}</td>
+                            <td>{{$row->numpages}}</td>
+                            @if (Route::has('login'))
+                                @auth
+                                    <td><a href="#"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="#"><i class="fas fa-trash"></i></a></td>
+                                @endif
+                            @endauth
 
-{{--        <div class = "container-fluid">--}}
-{{--            {!! $product -> links() !!} }--}}
-{{--        </div>--}}
+                    @endforeach
 
-            {{--        @foreach($hr_request as $row)--}}
-            {{--            <tr>--}}
-            {{--                <td>{{$row->title}}</td>--}}
-            {{--                <td>{{$row->firstname}}</td>--}}
-            {{--                <td>{{$row->mainname}}</td>--}}
-            {{--                <td>{{$row->price}}</td>--}}
-            {{--                <td>{{$row->numpage}}</td>--}}
-
-            {{--                <td><a href="#"><i class="fas fa-edit"></i></a></td>--}}
-            {{--                <td><a href="#"><i class="fas fa-trash"></i></a></td>--}}
-
-            {{--            </tr>--}}
-            {{--        @endforeach--}}
-
-            </tbody>
+                    </tr>
+{{--            </tbody>--}}
         </table>
     </div>
+
+
+{{--    pagination--}}
+
+
+        {{ $product -> links() }}
+
 @endsection
 
 @section('form')
@@ -75,14 +67,16 @@
         @auth
     <div class = "container-fluid">
         <div class="form" style="margin-left:550px; margin-right: 550px; border: 2px dotted deepskyblue; padding: 15px 15px">
-            <form>
+            <form  method="post" action="{{route('inputProduct')}}">
+                @csrf
                 <div class="form-floating mb-2">
                     <select class="form-select" aria-label="Default select example" name="type">
-                        <option selected>Select Type</option>
-                        <option>Book</option>
-                        <option >CD</option>
-                        <option >Game</option>
-                    </select></div>
+{{--                        <option selected disabled>Select Type</option>--}}
+                        <option selected>Book</option>
+                        <option disabled >CD</option>
+                        <option  disabled>Game</option>
+                    </select>
+                </div>
                 <label>Author/Artist:</label>
                 <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="floatingInput" name="firstname" placeholder="First Name">
