@@ -7,8 +7,9 @@
 
 
 @section('content')
-
-    <br>
+    <div style="background-color: #1ab2ff; margin-top: 5px; margin-bottom:5px; height: 40px; color: darkslateblue;">
+        <h2 style="text-align: center; font-family: 'Comic Sans MS'">Game</h2>
+    </div>
     <form class="container-fluid">
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Search</span>
@@ -19,13 +20,13 @@
 
     <div class = "container-fluid">
 
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th scope="col">Title</th>
                 <th scope="col">Console</th>
-                <th scope="col">Pages</th>
+                <th scope="col">Title</th>
                 <th scope="col">Price</th>
+                <th scope="col">Pegi</th>
                 @if (Route::has('login'))
                     @auth
                         <th scope="col">Edit</th>
@@ -42,19 +43,24 @@
                     <td>{{$row->mainname}}</td>
                     <td>{{$row->price}}</td>
                     <td>{{$row->numpages}}</td>
-
-                    @endforeach
-
                     @if (Route::has('login'))
                         @auth
                             <td><a href="#"><i class="fas fa-edit"></i></a></td>
                             <td><a href="#"><i class="fas fa-trash"></i></a></td>
                         @endif
                     @endauth
+
+                    @endforeach
+
                 </tr>
             {{--            </tbody>--}}
         </table>
     </div>
+
+    {{--    pagination--}}
+
+
+    {{ $product -> links() }}
 @endsection
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use config\newsletter;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,17 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//
-//Route::get('newsletter','NewsletterController@index');
-//Route::post('newsletter/store','NewsletterController@store');
-
-Route::post('/subscribe', function ()
-{
-   $email = request('email');
-
-    Newsletter::subscribe($email);
-    return view('welcome');
-});
 
 Route::post('products/inputProduct', [ProductController::class, 'input'])->name('inputProduct');
 Route::get('products/book', [ProductController::class, 'showBookproduct'])->name('showBookproduct');

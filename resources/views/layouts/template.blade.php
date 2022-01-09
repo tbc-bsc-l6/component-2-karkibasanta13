@@ -15,7 +15,8 @@
 
 {{--NAVBAR SECTION--}}
 @section('navbar')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#1ab2ff;" >
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/img/lbu.png" alt="" width="100" height="50" class="d-inline-block align-text-top">
@@ -33,9 +34,9 @@
                             Products
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="products/book">Book</a></li>
-                            <li><a class="dropdown-item" href="products/cd">CD</a></li>
-                            <li><a class="dropdown-item" href="products/game">Game</a></li>
+                            <li><a class="dropdown-item" href="/products/book">Book</a></li>
+                            <li><a class="dropdown-item" href="/products/cd">CD</a></li>
+                            <li><a class="dropdown-item" href="/products/game">Game</a></li>
                         </ul>
                     </li>
 
@@ -46,18 +47,20 @@
                                     Dashboard
                                 </a>
                             </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <button type="button" class="btn btn-danger">Sign Up</button>
+                                    </a>
+                                </li>
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
-                                    <button type="button" class="btn btn-primary">Login</button>
+                                    <button type="button" class="btn btn-success">Login</button>
                                 </a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">
-                                        <button type="button" class="btn btn-dark">Sign Up</button>
-                                    </a>
-                                </li>
+
                             @endif
                         @endauth
                 </ul>
@@ -77,37 +80,24 @@
 
     <br><hr style="margin-left: 55px; margin-right: 55px;">
     <div class="container-fluid">
-
-
-
-
-{{--                                <div class="form-group bg-white border rounded px-2 py-2 mb-2">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col"> <input type="email" name="email" class="form-control pl-3 shadow-none bg-transparent border-0" placeholder="Enter your email address"> </div>--}}
-{{--                                        <div class="col-auto"> <button type="submit" class="btn btn-block btn-dark"><i class="fa fa-paper-plane-o mr-2"></i>Get notified</button> </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-
-
         <footer
             class="text-center text-lg-start text-white"
-            style="background-color: #1c2331"
+            style="background-color:#1ab2ff"
         >
             <section
                 class="d-flex justify-content-between p-4"
-                style="background-color: rgba(0, 0, 0, 0.2)">
+                style="background-color: #00aaff">
 
                 <div class="row" style="margin-left: 250px;">
                   <div class="col-12">
-                        <form method="post" action='/subscribe'>
+                        <form method="POST" action="/newsletter">
                             @csrf
-                            <label for="inputPassword5" class="form-label"><h5>Sign Up For Newsletter?</h5></label>
-                            <input type="text" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="email">
+                            <label for="email" class="form-label"><h5>Sign Up For Newsletter?</h5></label>
+                            <input type="email" id="email" class="form-control" aria-describedby="emaildHelpBlock" name="email">
                             <div class="d-grid gap-2 col-2 mx-auto" style="margin-top: 5px;">
-                                <button class="btn btn-primary" type="submit" style="text-align: center">Sign Up</button>
+                                <button class="btn btn-danger" type="submit" style="text-align: center">Sign Up</button>
                             </div>
-                            <div id="passwordHelpBlock" class="form-text" style="text-align: center">
+                            <div id="emailHelpBlock" class="form-text" style="text-align: center">
                                 We will not spam your inbox with rubbish. We promise you to provide only valuable information when you sign up with our newsletter. Thank You. :)</div>
                         </form>
                         </div>
@@ -139,13 +129,13 @@
                                 style="width: 60px; background-color: #7c4dff; height: 2px"
                             />
                             <p>
-                                <a href="products/book" class="text-white">Book</a>
+                                <a href="/products/book" class="text-white">Book</a>
                             </p>
                             <p>
-                                <a href="products/cd" class="text-white">CD</a>
+                                <a href="/products/cd" class="text-white">CD</a>
                             </p>
                             <p>
-                                <a href="products/game" class="text-white">Game</a>
+                                <a href="/products/game" class="text-white">Game</a>
                             </p>
                         </div>
 
@@ -166,7 +156,7 @@
             </section>
             <div
                 class="text-center p-3"
-                style="background-color: rgba(0, 0, 0, 0.2)"
+                style="background-color: #00aaff"
             >
                 © 2021 Copyright: Basanta Karki
                 <div>
