@@ -68,5 +68,35 @@ class ProductController extends Controller
 
     }
 
+    public function updateProductform(Product $product)
+    {
 
+        return view('products.updateProduct', [
+            'product' => $product
+        ]);
+    }
+    public function updateProduct(Request $request, Product $product)
+    {
+        $updatedProduct = $this->productValidation($request);
+        Product::where('id',$product->id)->update($updatedProduct);
+        if ($product->type=='CD'){
+            return redirect('/products/cd');
+        }
+        elseif ($product->type=='Game'){
+            return redirect('/products/game');
+        }
+        return redirect('/products/book');
+    }
+
+    public function deleteProduct(Product $product)
+    {
+        Product::where('id',$product->id)->delete();
+        if ($product->type=='CD'){
+            return redirect('/products/cd');
+        }
+        elseif ($product->type=='Game'){
+            return redirect('/products/game');
+        }
+        return redirect('/products/book');
+    }
 }

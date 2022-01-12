@@ -9,6 +9,7 @@
         @yield('title')
     </title>
         @yield('cdn')
+    <link rel="icon" href="/img/lbu.png" type="image/icon type">
 </head>
 <body>
     @yield('navbar')

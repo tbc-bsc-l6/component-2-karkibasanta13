@@ -7,19 +7,10 @@
 
 
 @section('content')
-    <div style="background-color: #1ab2ff; margin-top: 5px; margin-bottom:5px; height: 40px; color: darkslateblue;">
-        <h2 style="text-align: center; font-family: 'Comic Sans MS'">Game</h2>
-    </div>
-    <form class="container-fluid">
-        <div class="input-group">
-            <span class="input-group-text" id="basic-addon1">Search</span>
-            <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-    </form>
 <br>
 
     <div class = "container-fluid">
-
+        <h2>Game</h2>
         <table class="table table-striped table-hover">
             <thead>
             <tr>
@@ -45,8 +36,8 @@
                     <td>{{$row->numpages}}</td>
                     @if (Route::has('login'))
                         @auth
-                            <td><a href="#"><i class="fas fa-edit"></i></a></td>
-                            <td><a href="#"><i class="fas fa-trash"></i></a></td>
+                            <td><a href="updateProduct/{{$row->id}}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="deleteProduct/{{$row->id}}"><i class="fas fa-trash"></i></a></td>
                         @endif
                     @endauth
 
@@ -99,7 +90,7 @@
                     <input type="number" class="form-control" id="floatingInput" placeholder="Price" name="price">
                     <label for="floatingInput">Price</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <center><button type="submit" class="btn btn-success">Submit</button></center>
             </form>
         </div>
     </div>

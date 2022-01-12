@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
 @endsection
 
 {{--JS CDN LINK--}}
@@ -16,10 +17,10 @@
 {{--NAVBAR SECTION--}}
 @section('navbar')
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#1ab2ff;" >
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: black; border-bottom: 1px solid white "  >
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/img/lbu.png" alt="" width="100" height="50" class="d-inline-block align-text-top">
+                <img src="/img/lbu.png" alt="" width="125" height="75" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,6 +48,7 @@
                                     Dashboard
                                 </a>
                             </li>
+
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">
@@ -78,33 +80,36 @@
 {{--FOOTER SECTION--}}
 @section('footer')
 
-    <br><hr style="margin-left: 55px; margin-right: 55px;">
+    <br>
     <div class="container-fluid">
         <footer
             class="text-center text-lg-start text-white"
-            style="background-color:#1ab2ff"
+            style="background-color:black; border-top: 1px solid white"
         >
             <section
                 class="d-flex justify-content-between p-4"
-                style="background-color: #00aaff">
+                style="background-color: black;">
 
-                <div class="row" style="margin-left: 250px;">
-                  <div class="col-12">
-                        <form method="POST" action="/newsletter">
-                            @csrf
-                            <label for="email" class="form-label"><h5>Sign Up For Newsletter?</h5></label>
-                            <input type="email" id="email" class="form-control" aria-describedby="emaildHelpBlock" name="email">
-                            <div class="d-grid gap-2 col-2 mx-auto" style="margin-top: 5px;">
-                                <button class="btn btn-danger" type="submit" style="text-align: center">Sign Up</button>
-                            </div>
-                            <div id="emailHelpBlock" class="form-text" style="text-align: center">
-                                We will not spam your inbox with rubbish. We promise you to provide only valuable information when you sign up with our newsletter. Thank You. :)</div>
-                        </form>
+                <div class="row" style="margin:auto; border-left: 1px solid white; border-right: 1px solid white;">
+                  <div class="col">
+                      <h3>Wanna hear more from us? SUBSCRIBE TO OUR NEWSLETTER</h3>
+                      <form method="POST" action="{{route('subscribe')}}">
+                          @csrf
+                          <div class="input-group">
+                              <input type="email" name="subscriber" class="form-control" placeholder="Enter your email">
+                              <button type="submit" class="btn btn-danger">Subscribe</button>
+                          </div>
+                      </form>
+                      @if (session('errors'))
+                          <div class="alert alert-info">
+                              <p>{{ session('errors') }}</p>
+                          </div>
+                      @endif
                         </div>
                 </div>
             </section>
             <section>
-                <div class="container text-center text-md-start mt-5">
+                <div class="container text-center text-md-start mt-5" style="border-top: 1px solid white">
                     <!-- Grid row -->
                     <div class="row mt-3">
                         <!-- Grid column -->
@@ -156,7 +161,7 @@
             </section>
             <div
                 class="text-center p-3"
-                style="background-color: #00aaff"
+                style="background-color: black; border-top: 1px solid white"
             >
                 © 2021 Copyright: Basanta Karki
                 <div>
